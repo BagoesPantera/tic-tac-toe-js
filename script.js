@@ -8,6 +8,7 @@ const btnNewGame = document.getElementById('new-game')
 // variable
 // x turn first
 let xTurn = true
+let drawCount = 0
 
 const winningPatterns = [
     [0, 1, 2],
@@ -38,6 +39,11 @@ function winChecker() {
     }
 }
 
+function draw() {
+    popUp.classList.remove('hide')
+    message.innerHTML = '&#x1F60E; <br> Draw'
+}
+
 btnOption.forEach((element) => {
     element.addEventListener('click', () => {
         if(xTurn){
@@ -50,6 +56,10 @@ btnOption.forEach((element) => {
         // disable the element, so you cant click it again
         element.disabled=true
         winChecker()
+        drawCount += 1
+        if (drawCount == 9) {
+            draw()
+        }
     })
 })
 
@@ -59,6 +69,7 @@ function newGame() {
         element.innerHTML = ''
     })
     xTurn = true;
+    drawCount = 0
     popUp.classList.add('hide')
 }
 
