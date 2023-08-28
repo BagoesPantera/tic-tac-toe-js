@@ -2,6 +2,8 @@
 const btnOption = document.querySelectorAll('.button-option')
 const popUp = document.querySelector('.popup')
 const message = document.getElementById('message')
+const btnRestart = document.getElementById('restart')
+const btnNewGame = document.getElementById('new-game')
 
 // variable
 // x turn first
@@ -49,4 +51,21 @@ btnOption.forEach((element) => {
         element.disabled=true
         winChecker()
     })
+})
+
+function newGame() {
+    btnOption.forEach((element) => {
+        element.disabled = false
+        element.innerHTML = ''
+    })
+    xTurn = true;
+    popUp.classList.add('hide')
+}
+
+btnRestart.addEventListener('click', () => {
+    newGame()
+})
+
+btnNewGame.addEventListener('click', () => {
+    newGame()
 })
